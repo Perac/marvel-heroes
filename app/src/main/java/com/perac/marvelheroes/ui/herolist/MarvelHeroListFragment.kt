@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.perac.marvelheroes.R
 import com.perac.marvelheroes.databinding.FragmentHeroListBinding
+import com.perac.marvelheroes.network.models.CharacterDataWrapper
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
+
+    private val viewModel by viewModel<MarvelHeroesListViewModel>()
 
     private lateinit var viewBinding: FragmentHeroListBinding
 
@@ -19,5 +23,10 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
         viewBinding.button.setOnClickListener {
             findNavController().navigate(R.id.open_hero_details)
         }
+        viewModel.marvelHeroesListLiveData.observe(viewLifecycleOwner) { onHeroesListUpdated(it) }
+    }
+
+    private fun onHeroesListUpdated(characterDataWrapper: CharacterDataWrapper) {
+        println(characterDataWrapper.toString())
     }
 }
