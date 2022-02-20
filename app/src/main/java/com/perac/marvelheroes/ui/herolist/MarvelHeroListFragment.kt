@@ -21,9 +21,10 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
         viewBinding = FragmentHeroListBinding.bind(view)
 
         viewBinding.button.setOnClickListener {
-            findNavController().navigate(R.id.open_hero_details)
+            val action = MarvelHeroListFragmentDirections.openHeroDetails("1011334")
+            findNavController().navigate(action)
         }
-        viewModel.marvelHeroesListLiveData.observe(viewLifecycleOwner) { onHeroesListUpdated(it) }
+        viewModel.liveData.observe(viewLifecycleOwner) { onHeroesListUpdated(it) }
     }
 
     private fun onHeroesListUpdated(characterDataWrapper: CharacterDataWrapper) {

@@ -15,5 +15,9 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.perac.marvelheroes.ui.herodetails.MarvelHeroDetailsFragment" />
+        android:name="com.perac.marvelheroes.ui.herodetails.MarvelHeroDetailsFragment">
+        <argument
+            android:name="heroId"
+            app:argType="string" />
+    </fragment>
 </navigation>

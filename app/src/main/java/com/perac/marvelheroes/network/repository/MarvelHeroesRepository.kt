@@ -44,9 +44,10 @@ class MarvelHeroesRepository(
         .subscribeOn(Schedulers.io())
 
 
-    fun fetchHeroesList() = getApi()
+    fun fetchHeroesList(searchParam: String? = null) = getApi()
         .flatMapSingle {
             it.fetchHeroList(
+                searchParam = searchParam,
                 publicKey = API_KEY,
                 timestamp = TIMESTAMP,
                 hash = hash ?: buildHash()
@@ -55,7 +56,12 @@ class MarvelHeroesRepository(
 
     fun fetchHeroDetails(heroId: String) = getApi()
         .flatMapSingle {
-            it.fetchHeroDetails(heroId)
+            it.fetchHeroDetails(
+                heroId,
+                publicKey = API_KEY,
+                timestamp = TIMESTAMP,
+                hash = hash ?: buildHash()
+            )
         }.singleOrError()
 
     private fun buildHash(): String {

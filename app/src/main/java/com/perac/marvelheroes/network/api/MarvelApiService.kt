@@ -10,13 +10,19 @@ interface MarvelApiService {
 
     @GET("/v1/public/characters")
     fun fetchHeroList(
+        @Query("nameStartsWith") searchParam: String?,
         @Query("apikey") publicKey: String,
         @Query("ts") timestamp: String,
         @Query("hash") hash: String
     ): Single<CharacterDataWrapper>
 
     @GET("/v1/public/characters/{characterId}")
-    fun fetchHeroDetails(@Path("characterId") heroId: String): Single<CharacterDataWrapper>
+    fun fetchHeroDetails(
+        @Path("characterId") heroId: String,
+        @Query("apikey") publicKey: String,
+        @Query("ts") timestamp: String,
+        @Query("hash") hash: String
+    ): Single<CharacterDataWrapper>
 
 //    @GET("/v1/public/characters/{characterId}/comics")
 //    fun fetchHeroComics(@Path("characterId") heroId: String): Single<>
