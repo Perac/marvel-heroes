@@ -14,7 +14,7 @@ val appModule = module {
         OkHttpClient()
             .newBuilder()
             .addInterceptor(HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
+                level = HttpLoggingInterceptor.Level.BASIC
             })
             .build()
     }

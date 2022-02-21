@@ -52,7 +52,7 @@ class MarvelHeroesRepository(
                 timestamp = TIMESTAMP,
                 hash = hash ?: buildHash()
             )
-        }.singleOrError()
+        }
 
     fun fetchHeroDetails(heroId: String) = getApi()
         .flatMapSingle {
@@ -62,7 +62,7 @@ class MarvelHeroesRepository(
                 timestamp = TIMESTAMP,
                 hash = hash ?: buildHash()
             )
-        }.singleOrError()
+        }
 
     private fun buildHash(): String {
         val md = MessageDigest.getInstance("MD5")

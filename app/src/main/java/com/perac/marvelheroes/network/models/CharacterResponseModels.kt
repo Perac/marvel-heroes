@@ -14,5 +14,17 @@ data class Character(
     val id: Int,
     val name: String,
     val description: String,
-    val comics: List<ComicList>
+    val comics: ComicList,
+    val thumbnail: Image
+) {
+    fun getImageUrl() = if (thumbnail.path.contains("http:")) {
+        "${thumbnail.path.replace("http:", "https:")}.${thumbnail.extension}"
+    } else {
+        "${thumbnail.path}.${thumbnail.extension}"
+    }
+}
+
+data class Image(
+    val path: String,
+    val extension: String
 )
