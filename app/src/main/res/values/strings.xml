@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Marvel Heroes</string>
+
+    <string name="associated_comics">Associated comics</string>
 </resources>

@@ -1,11 +1,14 @@
 package com.perac.marvelheroes.ui.herolist
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.perac.marvelheroes.R
 import com.perac.marvelheroes.databinding.FragmentHeroListBinding
+import com.perac.marvelheroes.extensions.setToolbarIcon
+import com.perac.marvelheroes.extensions.setToolbarTitle
 import com.perac.marvelheroes.network.models.Character
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,6 +27,9 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+        setToolbarTitle("")
+        setToolbarIcon(com.google.android.material.R.drawable.ic_m3_chip_close)
 
         viewBinding = FragmentHeroListBinding.bind(view)
 
@@ -41,5 +47,13 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
     private fun openHeroDetails(heroId: String) {
         val action = MarvelHeroListFragmentDirections.openHeroDetails(heroId)
         findNavController().navigate(action)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            activity?.finish()
+            return true
+        }
+        return false
     }
 }
