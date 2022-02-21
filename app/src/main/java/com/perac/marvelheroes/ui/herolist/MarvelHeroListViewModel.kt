@@ -1,6 +1,7 @@
 package com.perac.marvelheroes.ui.herolist
 
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.distinctUntilChanged
 import com.perac.marvelheroes.base.BaseViewModel
 import com.perac.marvelheroes.network.models.Character
 import com.perac.marvelheroes.network.repository.MarvelHeroesRepository
@@ -14,7 +15,7 @@ class MarvelHeroListViewModel(
 ) : BaseViewModel<List<Character>>() {
 
     override val _liveData = MediatorLiveData<List<Character>>()
-    override val liveData = _liveData
+    override val liveData = _liveData.distinctUntilChanged()
 
     private var initialOffset = 0
 
