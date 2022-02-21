@@ -6,7 +6,9 @@
         <entry key="app/src/main/res/layout/activity_marvel_heroes.xml" value="0.13044579533941236" />
         <entry key="app/src/main/res/layout/fragment_hero_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_hero_list.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/fragment_hero_search.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/list_item_marvel_hero.xml" value="0.39823008849557523" />
+        <entry key="app/src/main/res/menu/menu_list_fragment.xml" value="0.27794871794871795" />
       </map>
     </option>
   </component>

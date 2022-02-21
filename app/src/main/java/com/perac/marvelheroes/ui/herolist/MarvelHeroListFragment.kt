@@ -1,6 +1,8 @@
 package com.perac.marvelheroes.ui.herolist
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -28,8 +30,8 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        setToolbarTitle("")
-        setToolbarIcon(com.google.android.material.R.drawable.ic_m3_chip_close)
+        setToolbarTitle(getString(R.string.app_name))
+        setToolbarIcon(R.drawable.ic_action_cancel)
 
         viewBinding = FragmentHeroListBinding.bind(view)
 
@@ -49,11 +51,23 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
         findNavController().navigate(action)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_list_fragment, menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             activity?.finish()
             return true
+        } else if (item.itemId == R.id.menu_item_search) {
+            openSearchFragment()
         }
         return false
+    }
+
+    private fun openSearchFragment() {
+        val action = MarvelHeroListFragmentDirections.openSearch()
+        findNavController().navigate(action)
     }
 }

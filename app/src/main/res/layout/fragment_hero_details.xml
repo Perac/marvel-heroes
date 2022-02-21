@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_medium"
             android:layout_marginTop="@dimen/padding_standard"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hero_image" />
@@ -33,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_medium"
             android:layout_marginTop="@dimen/padding_medium"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_body"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_medium"
             android:layout_marginTop="@dimen/padding_medium"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_body"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description" />
@@ -55,6 +58,7 @@
             android:layout_marginHorizontal="@dimen/padding_medium"
             android:layout_marginTop="@dimen/padding_medium"
             android:layout_marginBottom="@dimen/padding_standard"
+            android:textColor="@color/black"
             android:textSize="@dimen/text_size_body"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
