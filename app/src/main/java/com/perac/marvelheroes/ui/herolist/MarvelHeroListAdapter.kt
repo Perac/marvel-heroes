@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.perac.marvelheroes.network.models.Character
 
+/**
+ * RecyclerView adapter for Marvel heroes list.
+ */
 class MarvelHeroListAdapter(
-    val onItemClickListener: (String) -> Unit
+    private val onItemClickListener: (String) -> Unit
 ) : ListAdapter<Character, RecyclerView.ViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -20,6 +23,7 @@ class MarvelHeroListAdapter(
 
     companion object {
 
+        // diff util used to update UI changes with performance boost
         private val diffUtil = object : DiffUtil.ItemCallback<Character>() {
 
             override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {

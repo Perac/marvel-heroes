@@ -7,6 +7,9 @@ import com.perac.marvelheroes.network.models.Character
 import com.perac.marvelheroes.network.repository.MarvelHeroesRepository
 import io.reactivex.rxjava3.core.Observable
 
+/**
+ * ViewModel used to fetch Marvel heroes list data and update live data for UI.
+ */
 class MarvelHeroListViewModel(
     private val marvelHeroesRepository: MarvelHeroesRepository
 ) : BaseViewModel<List<Character>>() {

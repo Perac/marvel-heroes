@@ -10,6 +10,9 @@ import com.perac.marvelheroes.network.models.CharacterDataWrapper
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
+/**
+ * Fragment used for displaying hero details.
+ */
 class MarvelHeroDetailsFragment : Fragment(R.layout.fragment_hero_details) {
 
     private val navArgs: MarvelHeroDetailsFragmentArgs by navArgs()

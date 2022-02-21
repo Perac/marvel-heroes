@@ -7,6 +7,9 @@ import com.perac.marvelheroes.databinding.ListItemMarvelHeroBinding
 import com.perac.marvelheroes.extensions.fetchImageWithRoundedCorners
 import com.perac.marvelheroes.network.models.Character
 
+/**
+ * ViewHolder for displaying info on one hero in a list.
+ */
 class HeroListItemViewHolder(
     parent: ViewGroup,
     private val onItemClickListener: (heroId: String) -> Unit

@@ -6,6 +6,9 @@ import com.perac.marvelheroes.ui.herolist.MarvelHeroListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+/**
+ * Koin module for fragment dependencies.
+ */
 val fragmentModule = module {
 
     viewModel { MarvelHeroListViewModel(marvelHeroesRepository = get()) }

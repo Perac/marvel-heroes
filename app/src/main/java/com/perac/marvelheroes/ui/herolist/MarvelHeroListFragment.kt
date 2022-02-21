@@ -9,6 +9,9 @@ import com.perac.marvelheroes.databinding.FragmentHeroListBinding
 import com.perac.marvelheroes.network.models.Character
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Fragment used to display Marvel heroes list.
+ */
 class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
 
     private val viewModel by viewModel<MarvelHeroListViewModel>()
@@ -32,6 +35,9 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
         listAdapter.submitList(characterList)
     }
 
+    /**
+     * Method used to navigate to hero details for given [heroId].
+     */
     private fun openHeroDetails(heroId: String) {
         val action = MarvelHeroListFragmentDirections.openHeroDetails(heroId)
         findNavController().navigate(action)

@@ -6,6 +6,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 
+/**
+ * Koin module with app level dependencies.
+ */
 val appModule = module {
 
     single<Gson> { Gson() }

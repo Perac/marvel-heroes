@@ -11,6 +11,9 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.MessageDigest
 
+/**
+ * Repository class for fetching data about Marvel heroes.
+ */
 class MarvelHeroesRepository(
     gson: Gson,
     okHttpClient: OkHttpClient
@@ -44,6 +47,9 @@ class MarvelHeroesRepository(
         .subscribeOn(Schedulers.io())
 
 
+    /**
+     * Returns a list of all Marvel heroes, can be filtered with [searchParam].
+     */
     fun fetchHeroesList(searchParam: String? = null) = getApi()
         .flatMapSingle {
             it.fetchHeroList(
@@ -54,6 +60,9 @@ class MarvelHeroesRepository(
             )
         }
 
+    /**
+     * Returns details of a hero for give [heroId].
+     */
     fun fetchHeroDetails(heroId: String) = getApi()
         .flatMapSingle {
             it.fetchHeroDetails(
@@ -64,6 +73,9 @@ class MarvelHeroesRepository(
             )
         }
 
+    /**
+     * This method builds md5 hash which is required for successful data fetching from API.
+     */
     private fun buildHash(): String {
         val md = MessageDigest.getInstance("MD5")
         val digestUtils = DigestUtils(md)

@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 
-open class BaseViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
+/**
+ * Base ViewHolder class which inflates layout.
+ */
+open class BaseViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
 
     constructor(parent: ViewGroup, @LayoutRes layoutId: Int, attachToRoot: Boolean = false) :
         this(LayoutInflater.from(parent.context).inflate(layoutId, parent, attachToRoot))

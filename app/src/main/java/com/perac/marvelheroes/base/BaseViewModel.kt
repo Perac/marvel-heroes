@@ -8,6 +8,9 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
+/**
+ * Base ViewModel class which handles data fetching and updating live data for views.
+ */
 abstract class BaseViewModel<DATA : Any> : ViewModel() {
 
     protected abstract val _liveData: MediatorLiveData<DATA>
