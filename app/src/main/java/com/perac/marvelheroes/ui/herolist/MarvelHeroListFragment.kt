@@ -12,6 +12,7 @@ import com.perac.marvelheroes.databinding.FragmentHeroListBinding
 import com.perac.marvelheroes.extensions.setToolbarIcon
 import com.perac.marvelheroes.extensions.setToolbarTitle
 import com.perac.marvelheroes.network.models.Character
+import com.perac.marvelheroes.util.onScrolledToEnd
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -35,7 +36,12 @@ class MarvelHeroListFragment : Fragment(R.layout.fragment_hero_list) {
 
         viewBinding = FragmentHeroListBinding.bind(view)
 
-        viewBinding.recyclerView.adapter = listAdapter
+        viewBinding.recyclerView.apply {
+            adapter = listAdapter
+            onScrolledToEnd {
+                viewModel.loadMore()
+            }
+        }
         viewModel.liveData.observe(viewLifecycleOwner) { onHeroesListUpdated(it) }
     }
 

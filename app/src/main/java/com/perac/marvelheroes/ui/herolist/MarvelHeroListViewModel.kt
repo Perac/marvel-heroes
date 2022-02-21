@@ -1,7 +1,6 @@
 package com.perac.marvelheroes.ui.herolist
 
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.distinctUntilChanged
 import com.perac.marvelheroes.base.BaseViewModel
 import com.perac.marvelheroes.network.models.Character
 import com.perac.marvelheroes.network.repository.MarvelHeroesRepository
@@ -15,12 +14,30 @@ class MarvelHeroListViewModel(
 ) : BaseViewModel<List<Character>>() {
 
     override val _liveData = MediatorLiveData<List<Character>>()
-    override val liveData = _liveData.distinctUntilChanged()
+    override val liveData = _liveData
+
+    private var initialOffset = 0
 
     override fun fetchData(): Observable<List<Character>> = marvelHeroesRepository.fetchHeroesList()
         .map { it.data.results }
 
     init {
         updateData()
+    }
+
+    fun loadMore() {
+        initialOffset += PAGE_SIZE
+        marvelHeroesRepository.fetchHeroesList(offset = initialOffset, limit = PAGE_SIZE)
+            .map { it.data.results }
+            .subscribe({
+                val currentValue = _liveData.value ?: listOf()
+                _liveData.postValue(currentValue.plus(it))
+            }, {
+
+            })
+    }
+
+    private companion object {
+        private const val PAGE_SIZE = 20
     }
 }

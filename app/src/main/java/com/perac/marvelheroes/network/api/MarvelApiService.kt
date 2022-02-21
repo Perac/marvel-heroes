@@ -11,6 +11,8 @@ interface MarvelApiService {
     @GET("/v1/public/characters")
     fun fetchHeroList(
         @Query("nameStartsWith") searchParam: String?,
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int,
         @Query("apikey") publicKey: String,
         @Query("ts") timestamp: String,
         @Query("hash") hash: String

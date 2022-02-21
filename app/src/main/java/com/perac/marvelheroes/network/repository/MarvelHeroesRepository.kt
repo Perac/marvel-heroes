@@ -50,10 +50,12 @@ class MarvelHeroesRepository(
     /**
      * Returns a list of all Marvel heroes, can be filtered with [searchParam].
      */
-    fun fetchHeroesList(searchParam: String? = null) = getApi()
+    fun fetchHeroesList(searchParam: String? = null, offset: Int = 0, limit: Int = 20) = getApi()
         .flatMapSingle {
             it.fetchHeroList(
                 searchParam = searchParam,
+                offset = offset,
+                limit = limit,
                 publicKey = API_KEY,
                 timestamp = TIMESTAMP,
                 hash = hash ?: buildHash()
