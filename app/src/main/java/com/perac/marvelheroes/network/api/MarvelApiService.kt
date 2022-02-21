@@ -23,7 +23,4 @@ interface MarvelApiService {
         @Query("ts") timestamp: String,
         @Query("hash") hash: String
     ): Single<CharacterDataWrapper>
-
-//    @GET("/v1/public/characters/{characterId}/comics")
-//    fun fetchHeroComics(@Path("characterId") heroId: String): Single<>
 }

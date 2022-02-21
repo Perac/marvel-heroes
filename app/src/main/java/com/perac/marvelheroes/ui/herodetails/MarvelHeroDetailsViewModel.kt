@@ -3,7 +3,7 @@ package com.perac.marvelheroes.ui.herodetails
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.distinctUntilChanged
 import com.perac.marvelheroes.base.BaseViewModel
-import com.perac.marvelheroes.network.models.CharacterDataWrapper
+import com.perac.marvelheroes.network.models.Character
 import com.perac.marvelheroes.network.repository.MarvelHeroesRepository
 import io.reactivex.rxjava3.core.Observable
 
@@ -13,13 +13,14 @@ import io.reactivex.rxjava3.core.Observable
 class MarvelHeroDetailsViewModel(
     private val marvelHeroesRepository: MarvelHeroesRepository,
     private val heroId: String
-) : BaseViewModel<CharacterDataWrapper>() {
+) : BaseViewModel<Character>() {
 
-    override val _liveData = MediatorLiveData<CharacterDataWrapper>()
+    override val _liveData = MediatorLiveData<Character>()
     override val liveData = _liveData.distinctUntilChanged()
 
-    override fun fetchData(): Observable<CharacterDataWrapper> =
+    override fun fetchData(): Observable<Character> =
         marvelHeroesRepository.fetchHeroDetails(heroId)
+            .map { it.data.results.first() }
 
     init {
         updateData()
